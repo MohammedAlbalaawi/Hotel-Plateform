@@ -6,26 +6,46 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AdminProfileController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('admin.profile');
     }
 
-    public function profile_submit(Request $request){
+    public function profile_submit(Request $request)
+    {
+
+        $admin_data = Admin::where('email', Auth::guard('admin')->user()->email)->first();
+
         $request->validate([
-            'name' =>'required'
+            'name' => 'required'
         ]);
 
-        if($request->password != ''){
+        if ($request->password != '') {
             $request->validate([
-                'password' =>'required',
+                'password' => 'required',
                 'retype_password' => 'required|same:password'
             ]);
+
+            $admin_data->password = Hash::make($request->password);
         }
 
-        $admin_data = Admin::where('email',Auth::guard('admin')->user()->email)->first();
+        if ($request->hasFile('photo')) {
+            $request->validate([
+                'photo' => 'image|mimes:jpg,jpeg,png,gif,webp'
+            ]);
+
+            if ($admin_data->photo &&  Storage::exists($admin_data->photo)) {
+                Storage::delete($admin_data->photo);
+            }
+
+            $admin_data->photo = $request->file('photo')->store('admins');
+        }
+
         $admin_data->name = $request->name;
         $admin_data->update();
 
