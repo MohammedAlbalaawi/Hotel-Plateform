@@ -36,3 +36,4 @@ Route::get('/admin/slide/add', [AdminSlideController::class,'create'])->name('ad
 Route::post('/admin/slide/store', [AdminSlideController::class,'store'])->name('admin_slide_store');
 Route::get('/admin/slide/edit/{id}', [AdminSlideController::class,'edit'])->name('admin_slide_edit');
 Route::put('/admin/slide/update/{id}', [AdminSlideController::class,'update'])->name('admin_slide_update');
+Route::get('/admin/slide/delete/{id}', [AdminSlideController::class,'delete'])->name('admin_slide_delete');

@@ -36,7 +36,7 @@ class AdminSlideController extends Controller
         Slider::create($slide_data);
 
         return redirect()
-            ->back()
+            ->route('admin_slide_view')
             ->with('success', 'Slide added successfully');
     }
 
@@ -72,6 +72,18 @@ class AdminSlideController extends Controller
         return redirect()
             ->back()
             ->with('success', 'Slider updated successfully');
+    }
+
+    public function delete($id)
+    {
+        $slide_data = Slider::where('id', $id)->first();
+
+        if ($slide_data->photo && Storage::exists($slide_data->photo)) {
+            Storage::delete($slide_data->photo);
+        }
+
+        $slide_data->destroy($id);
+        return redirect()->back()->with('success','Slide Deleted Successfully');
     }
 
 }

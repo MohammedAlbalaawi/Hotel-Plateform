@@ -14,7 +14,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="example1">
+                            <table class="table table-bordered text-center">
                                 <thead>
                                 <tr>
                                     <th>Slider</th>
@@ -32,9 +32,9 @@
                                             <img src="{{\Illuminate\Support\Facades\Storage::url( $slide->photo )}}"
                                                  alt="slid" class="w_200">
                                         </td>
-                                        <td class="pt_10 pb_10">
-                                            <a href="{{ route('admin_slide_edit',$slide->id) }}" class="btn btn-warning">Edit</a>
-                                            <a href="" class="btn btn-danger"
+                                        <td class="">
+                                            <a href="{{ route('admin_slide_edit',$slide->id) }}" class="btn btn-warning w-25">Edit</a>
+                                            <a href="{{ route('admin_slide_delete',$slide->id) }}" class="btn btn-danger w-25"
                                                onClick="return confirm('Are you sure?');">Delete</a>
                                         </td>
                                     </tr>
