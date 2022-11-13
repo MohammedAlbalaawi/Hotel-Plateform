@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,18 +17,15 @@ class AdminProfileController extends Controller
         return view('admin.profile');
     }
 
-    public function profile_submit(Request $request)
+    public function profile_submit(ProfileUpdateRequest $request)
     {
 
         $admin_data = Admin::where('email', Auth::guard('admin')->user()->email)->first();
 
-        $request->validate([
-            'name' => 'required'
-        ]);
-
+    
         if ($request->password != '') {
+
             $request->validate([
-                'password' => 'required',
                 'retype_password' => 'required|same:password'
             ]);
 
@@ -35,9 +33,6 @@ class AdminProfileController extends Controller
         }
 
         if ($request->hasFile('photo')) {
-            $request->validate([
-                'photo' => 'image|mimes:jpg,jpeg,png,gif,webp'
-            ]);
 
             if ($admin_data->photo &&  Storage::exists($admin_data->photo)) {
                 Storage::delete($admin_data->photo);
