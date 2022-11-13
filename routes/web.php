@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\front\AboutController;
 use App\Http\Controllers\front\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -10,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 /* Front */
 Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('/about', [AboutController::class,'index'])->name('about');
+
 
 /* Admin */
 Route::get('/admin/home', [AdminHomeController::class,'index'])->name('admin_home')->middleware('admin:admin');
@@ -27,3 +29,10 @@ Route::post('/admin/reset-password-submit', [AdminLoginController::class,'reset_
 
 Route::get('/admin/edit-profile', [AdminProfileController::class,'index'])->name('admin_profile')->middleware('admin:admin');
 Route::post('/admin/edit-profile-submit', [AdminProfileController::class,'profile_submit'])->name('admin_profile_submit')->middleware('admin:admin');
+
+/* slides Routes */
+Route::get('/admin/slide/view', [AdminSlideController::class,'index'])->name('admin_slide_view');
+Route::get('/admin/slide/add', [AdminSlideController::class,'create'])->name('admin_slide_create');
+Route::post('/admin/slide/store', [AdminSlideController::class,'store'])->name('admin_slide_store');
+Route::get('/admin/slide/edit/{id}', [AdminSlideController::class,'edit'])->name('admin_slide_edit');
+Route::put('/admin/slide/update/{id}', [AdminSlideController::class,'update'])->name('admin_slide_update');
