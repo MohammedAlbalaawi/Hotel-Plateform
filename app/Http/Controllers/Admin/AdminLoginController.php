@@ -34,7 +34,7 @@ class AdminLoginController extends Controller
                 ->route('admin_home');
         }else{
             return redirect()
-                ->route('admin_login')
+                ->route('adminDashboard.index')
                 ->with('error', 'Email or password is incorrect');
         }
     }
@@ -70,7 +70,7 @@ class AdminLoginController extends Controller
         Mail::to($request->email)->send(new Websitemail($subject,$message));
 
         return redirect()
-            ->route('admin_login')
+            ->route('adminDashboard.index')
             ->with('success', 'Password reset link has been sent Successfully');
     }
 
@@ -98,12 +98,12 @@ class AdminLoginController extends Controller
         $admin_data->update();
 
         return redirect()
-            ->route('admin_login')
+            ->route('adminDashboard.index')
             ->with('success','Password has been Reset Success');
     }
 
     public function logout() {
         Auth::guard('admin')->logout();
-        return redirect()->route('admin_login');
+        return redirect()->route('adminDashboard.index');
     }
 }

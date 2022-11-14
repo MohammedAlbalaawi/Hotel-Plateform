@@ -30,51 +30,48 @@ class AdminSlideController extends Controller
         Slider::create($slide);
 
         return redirect()
-            ->route('admin_slide_view')
+            ->route('adminSlider.view')
             ->with('success', 'Slide added successfully');
     }
 
-    public function edit($id)
+    public function edit(Slider $slider)
     {
-        $slide_data = Slider::where('id',$id)->first();
-        return view('admin.slide_edit',compact('slide_data'));
+        // $slide_data = Slider::where('id',$id)->first();
+        return view('admin.slide_edit',compact('slider'));
     }
 
-    public function update(SlideUpdateRequest $request,$id)
+    public function update(SlideUpdateRequest $request,Slider $slider)
     {
-        $slide = $request->validated();
-
-        $slide = Slider::where('id', $id)->first();
 
         if ($request->hasFile('photo')) {
 
-            if ($slide->photo && Storage::exists($slide->photo)) {
-                Storage::delete($slide->photo);
+            if ($slider->photo && Storage::exists($slider->photo)) {
+                Storage::delete($slider->photo);
             }
 
-            $slide->photo = $request->file('photo')->store('slides');
+            $slider->photo = $request->file('photo')->store('slides');
         }
 
-        $slide->heading = $request->heading;
-        $slide->text = $request->text;
-        $slide->button_text = $request->button_text;
-        $slide->button_url = $request->button_url;
-        $slide->update();
+        $slider->update([
+            'heading' => $request->heading,
+            'text' => $request->text,
+            'button_text' => $request->button_text,
+            'button_url' => $request->button_url,
+        ]);
 
         return redirect()
-            ->route('admin_slide_view')
+            ->route('adminSlider.view')
             ->with('success', 'Slider updated successfully');
     }
 
-    public function delete($id)
+    public function delete(Slider $slider)
     {
-        $slide_data = Slider::where('id', $id)->first();
 
-        if ($slide_data->photo && Storage::exists($slide_data->photo)) {
-            Storage::delete($slide_data->photo);
+        if ($slider->photo && Storage::exists($slider->photo)) {
+            Storage::delete($slider->photo);
         }
 
-        $slide_data->destroy($id);
+        $slider->delete();
         return redirect()->back()->with('success','Slide Deleted Successfully');
     }
 

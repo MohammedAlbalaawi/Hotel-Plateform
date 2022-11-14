@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap"
           rel="stylesheet">
 
-    @include('admin.styles')
+    @include('admin.layout.styles')
     @include('admin.layout.scripts')
 </head>
 
@@ -28,7 +28,7 @@
                                 <h4 class="text-center">Reset Password</h4>
                             </div>
                             <div class="card-body card-body-auth">
-                                <form method="POST" action="{{route('admin_reset_password_submit')}}">
+                                <form method="POST" action="{{route('adminDashboard.resePasswordSubmit')}}">
                                     @csrf
 
                                     <input type="hidden" name="token" value="{{$token}}">

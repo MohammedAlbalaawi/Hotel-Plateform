@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap"
           rel="stylesheet">
 
-    @include('admin.styles')
+    @include('admin.layout.styles')
     @include('admin.layout.scripts')
 </head>
 
@@ -27,7 +27,7 @@
                                 <h4 class="text-center">Reset Password</h4>
                             </div>
                             <div class="card-body card-body-auth">
-                                <form method="POST" action="{{route('admin_forget_password_submit')}}">
+                                <form method="POST" action="{{route('adminDashboard.forgetPassword_submit')}}">
                                     @csrf
                                     <div class="form-group">
                                         @if(session()->get('error'))
@@ -52,7 +52,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div>
-                                            <a href="{{route('admin_login')}}">
+                                            <a href="{{route('adminDashboard.index')}}">
                                                 Back to login page
                                             </a>
                                         </div>

@@ -3,7 +3,7 @@
 @section('heading','View Slides')
 
 @section('right_top_button')
-<a href="{{route('admin_slide_create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Add new </a>
+<a href="{{route('adminSlider.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Add new </a>
 @endsection
 
 @section('main_content')
@@ -33,8 +33,8 @@
                                                  alt="slid" class="w_200">
                                         </td>
                                         <td class="">
-                                            <a href="{{ route('admin_slide_edit',$slide->id) }}" class="btn btn-warning w-25">Edit</a>
-                                            <a href="{{ route('admin_slide_delete',$slide->id) }}" class="btn btn-danger w-25"
+                                            <a href="{{ route('adminSlider.edit',$slide->id) }}" class="btn btn-warning w-25">Edit</a>
+                                            <a href="{{ route('adminSlider.delete',$slide->id) }}" class="btn btn-danger w-25"
                                                onClick="return confirm('Are you sure?');">Delete</a>
                                         </td>
                                     </tr>

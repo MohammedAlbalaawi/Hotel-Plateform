@@ -3,7 +3,7 @@
 @section('heading','Add Slide')
 
 @section('right_top_button')
-    <a href="{{route('admin_slide_view')}}" class="btn btn-primary"><i class="fas fa-eye"></i> View slides </a>
+    <a href="{{route('adminSlider.view')}}" class="btn btn-primary"><i class="fas fa-eye"></i> View slides </a>
 @endsection
 
 @section('main_content')
@@ -12,7 +12,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('admin_slide_store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('adminSlider.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
