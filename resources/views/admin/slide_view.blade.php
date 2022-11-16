@@ -3,7 +3,7 @@
 @section('heading','View Slides')
 
 @section('right_top_button')
-<a href="{{route('adminSlider.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Add new </a>
+<a href="{{route('adminSlider.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Add new </a>
 @endsection
 
 @section('main_content')
@@ -23,7 +23,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                
+
 
                                     @forelse($slides as $slide)
                                     <tr>
@@ -41,7 +41,7 @@
                                     @empty
                                         <p class="text-center">No Data</p>
                                     @endforelse
-                                
+
                                 </tbody>
                             </table>
                         </div>

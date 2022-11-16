@@ -3,7 +3,7 @@
 @section('heading','Edit Slide')
 
 @section('right_top_button')
-    <a href="{{route('adminSlider.view')}}" class="btn btn-primary"><i class="fas fa-eye"></i> View slides </a>
+    <a href="{{route('adminSlider.view')}}" class="btn btn-primary"><i class="fa fa-eye"></i> View slides </a>
 @endsection
 
 @section('main_content')
