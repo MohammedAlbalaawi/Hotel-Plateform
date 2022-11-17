@@ -60,7 +60,6 @@
                                         @error('password')
                                         <div class="text-danger">{{$message}}</div>
                                         @enderror
-                                        div.container
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block">
