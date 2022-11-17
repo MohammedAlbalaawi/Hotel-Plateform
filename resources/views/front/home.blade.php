@@ -4,30 +4,27 @@
 
     <div class="slider">
         <div class="slide-carousel owl-carousel">
-            <div class="item" style="background-image:url(uploads/slide1.jpg);">
+            @forelse ($all_slides as $slide)
+            
+            <div class="item" style="background-image:url({{\Illuminate\Support\Facades\Storage::url( $slide->photo )}}); background-size: 100% 100%;">
                 <div class="bg"></div>
                 <div class="text">
-                    <h2>Best Hotel in the City</h2>
+                    <h2>{{ $slide->heading }}</h2>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt libero voluptate, veritatis esse dolorem soluta.
+                        {{ $slide->text }}
                     </p>
+                    @if($slide->button_text != '')
                     <div class="button">
-                        <a href="">Read More</a>
+                        <a href="{{ $slide->button_url }}">{{ $slide->button_text }}</a>
                     </div>
+                    @endif
                 </div>
             </div>
-            <div class="item" style="background-image:url(uploads/slide2.jpg);">
-                <div class="bg"></div>
-                <div class="text">
-                    <h2>Quality rooms for the guests</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt libero voluptate, veritatis esse dolorem soluta.
-                    </p>
-                    <div class="button">
-                        <a href="">Read More</a>
-                    </div>
-                </div>
-            </div>
+            @empty
+                No Slides to show
+            @endforelse
+
+
         </div>
     </div>
 

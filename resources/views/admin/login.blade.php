@@ -29,7 +29,7 @@
                                 <h4 class="text-center">Admin Panel Login</h4>
                             </div>
                             <div class="card-body card-body-auth">
-                                <form method="POST" action="{{route('admin_login_submit')}}">
+                                <form method="POST" action="{{route('adminDashboard.submit')}}">
                                     @csrf
                                     <div class="form-group">
                                         @if(session()->get('success'))
@@ -37,11 +37,11 @@
                                                 {{ session()->get('success') }}
                                             </div>
                                         @endif
-                                            @if(session()->get('error'))
-                                                <div class="text-danger text-center">
-                                                    {{ session()->get('error') }}
-                                                </div>
-                                            @endif
+                                        @if(session()->get('error'))
+                                            <div class="text-danger text-center">
+                                                {{ session()->get('error') }}
+                                            </div>
+                                        @endif
                                         <input type="text"
                                                class="form-control @error('email') is-invalid @enderror"
                                                @error('email') style=" border-color: #dc3545 !important;" @enderror
@@ -60,6 +60,7 @@
                                         @error('password')
                                         <div class="text-danger">{{$message}}</div>
                                         @enderror
+                                        div.container
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-primary btn-lg btn-block">
@@ -68,7 +69,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div>
-                                            <a href="{{route('admin_forget_password')}}">
+                                            <a href="{{route('adminDashboard.forgetPassword')}}">
                                                 Forget Password?
                                             </a>
                                         </div>
