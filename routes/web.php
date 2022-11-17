@@ -69,4 +69,7 @@ Route::controller(AdminFeatureController::class)
         Route::get('/view', 'index')->name('view');
         Route::get('/add', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{feature}', 'edit')->name('edit');
+        Route::put('/update/{feature}', 'update')->name('update');
+        Route::get('/delete/{feature}', 'delete')->name('delete');
     });

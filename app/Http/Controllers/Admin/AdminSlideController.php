@@ -66,7 +66,6 @@ class AdminSlideController extends Controller
 
     public function delete(Slider $slider)
     {
-
         if ($slider->photo && Storage::exists($slider->photo)) {
             Storage::delete($slider->photo);
         }
