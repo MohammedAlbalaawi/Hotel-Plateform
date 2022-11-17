@@ -13,7 +13,7 @@ class AdminSlideController extends Controller
 {
     public function index()
     {
-        $slides = Slider::all();
+        $slides = Slider::paginate(3);
         return view('admin.slide_view', compact('slides'));
     }
 

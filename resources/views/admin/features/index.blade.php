@@ -7,7 +7,7 @@
 @endsection
 
 @section('main_content')
-
+<style></style>
     <div class="section-body">
         <div class="row">
             <div class="col-12">
@@ -51,6 +51,9 @@
                 </div>
             </div>
         </div>
+
     </div>
+
+{{$features->links()}}
 
 @endsection

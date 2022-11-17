@@ -50,5 +50,5 @@
             </div>
         </div>
     </div>
-
+    {{$slides->links()}}
 @endsection
