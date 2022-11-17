@@ -68,5 +68,5 @@ Route::controller(AdminFeatureController::class)
     ->group(function () {
         Route::get('/view', 'index')->name('view');
         Route::get('/add', 'create')->name('create');
-
+        Route::post('/store', 'store')->name('store');
     });

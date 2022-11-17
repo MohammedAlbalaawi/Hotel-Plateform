@@ -30,9 +30,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <img src="{{\Illuminate\Support\Facades\Storage::url( $feature->photo )}}"
-                                                 alt="slid" class="w_200">
-                                        </td>
+                                            <i class="{{$feature->icon}} fz_40"></i>
                                         <td>
                                             {{ $feature->heading}}
                                         </td>
