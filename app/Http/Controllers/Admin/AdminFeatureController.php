@@ -12,7 +12,7 @@ class AdminFeatureController extends Controller
 {
     public function index()
     {
-        $features = Feature::paginate(5);
+        $features = Feature::get();
         return view('admin.features.index', compact('features'));
     }
 

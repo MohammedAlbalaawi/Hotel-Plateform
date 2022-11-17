@@ -14,7 +14,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-bordered text-center">
+                            <table class="table table-bordered text-center" id="example1">
                                 <thead>
                                 <tr>
                                     <th>Feature</th>
@@ -54,6 +54,5 @@
 
     </div>
 
-{{$features->links()}}
 
 @endsection
