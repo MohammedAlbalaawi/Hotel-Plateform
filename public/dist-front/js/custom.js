@@ -58,7 +58,7 @@
 		});
 
 	});
-		
+
 	new WOW().init();
 
 	$('.video-button').magnificPopup({
@@ -98,7 +98,7 @@
         }
     });
 
-	$('.testimonial-carousel').owlCarousel({
+	$('.testimonials-carousel').owlCarousel({
 		loop: true,
 		autoplay: true,
 		autoplayHoverPause: true,
@@ -160,11 +160,11 @@
             cancelLabel: 'Clear'
         }
     });
-  
+
     $('.daterange1').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
     });
-  
+
     $('.daterange1').on('cancel.daterangepicker', function(ev, picker) {
         $(this).val('');
     });
@@ -174,5 +174,5 @@
 			top: 80,
 		})
 	}
-	
+
 })(jQuery);

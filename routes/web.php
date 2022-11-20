@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminSlideController;
+use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\front\AboutController;
 use App\Http\Controllers\front\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -73,3 +74,8 @@ Route::controller(AdminFeatureController::class)
         Route::put('/update/{feature}', 'update')->name('update');
         Route::get('/delete/{feature}', 'delete')->name('delete');
     });
+
+/* testimonials Routes */
+Route::resource('testimonials', AdminTestimonialController::class)
+    ->parameters(['testimonials' => 'model'])
+    ->middleware('admin:admin');
