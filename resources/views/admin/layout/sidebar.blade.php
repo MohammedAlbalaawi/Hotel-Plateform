@@ -1,33 +1,27 @@
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html">Admin Panel</a>
+            <a href="{{route('admin_home')}}">Admin Panel</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="index.html"></a>
+            <a href="{{route('admin_home')}}"></a>
         </div>
 
         <ul class="sidebar-menu">
 
             <li class="active"><a class="nav-link" href="{{route('admin_home')}}"><i class="fa fa-hand-o-right"></i> <span>Dashboard</span></a></li>
 
-            <li class="nav-item dropdown active">
-                <a href="#" class="nav-link has-dropdown"><i class="fa fa-hand-o-right"></i><span>Dropdown Items</span></a>
-                <ul class="dropdown-menu">
-                    <li class="active"><a class="nav-link" href=""><i class="fa fa-angle-right"></i> Item 1</a></li>
-                    <li class=""><a class="nav-link" href=""><i class="fa fa-angle-right"></i> Item 2</a></li>
-                </ul>
-            </li>
+{{--            <li class="nav-item dropdown active">--}}
+{{--                <a href="#" class="nav-link has-dropdown"><i class="fa fa-hand-o-right"></i><span>Dropdown Items</span></a>--}}
+{{--                <ul class="dropdown-menu">--}}
+{{--                    <li class="active"><a class="nav-link" href=""><i class="fa fa-angle-right"></i> Item 1</a></li>--}}
+{{--                    <li class=""><a class="nav-link" href=""><i class="fa fa-angle-right"></i> Item 2</a></li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
 
             <li class=""><a class="nav-link" href="{{ route('adminSlider.view') }}"><i class="fa fa-hand-point-right"></i> <span>ٍSlides</span></a></li>
 
-            <li class=""><a class="nav-link" href="setting.html"><i class="fa fa-hand-o-right"></i> <span>Setting</span></a></li>
-
-            <li class=""><a class="nav-link" href="form.html"><i class="fa fa-hand-o-right"></i> <span>Form</span></a></li>
-
-            <li class=""><a class="nav-link" href="table.html"><i class="fa fa-hand-o-right"></i> <span>Table</span></a></li>
-
-            <li class=""><a class="nav-link" href="invoice.html"><i class="fa fa-hand-o-right"></i> <span>Invoice</span></a></li>
+            <li class=""><a class="nav-link" href="{{ route('adminFeature.view') }}"><i class="fa fa-hand-point-right"></i> <span>Feature</span></a></li>
 
         </ul>
     </aside>

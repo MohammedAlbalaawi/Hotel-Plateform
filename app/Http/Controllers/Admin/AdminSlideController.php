@@ -13,7 +13,7 @@ class AdminSlideController extends Controller
 {
     public function index()
     {
-        $slides = Slider::all();
+        $slides = Slider::paginate(3);
         return view('admin.slide_view', compact('slides'));
     }
 
@@ -66,7 +66,6 @@ class AdminSlideController extends Controller
 
     public function delete(Slider $slider)
     {
-
         if ($slider->photo && Storage::exists($slider->photo)) {
             Storage::delete($slider->photo);
         }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -58,3 +59,17 @@ Route::controller(AdminSlideController::class)
         Route::put('/update/{slider}', 'update')->name('update');
         Route::get('/delete/{slider}', 'delete')->name('delete');
 });
+
+/* features Routes */
+Route::controller(AdminFeatureController::class)
+    ->prefix('admin/feature')
+    ->name('adminFeature.')
+    ->middleware('admin:admin')
+    ->group(function () {
+        Route::get('/view', 'index')->name('view');
+        Route::get('/add', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{feature}', 'edit')->name('edit');
+        Route::put('/update/{feature}', 'update')->name('update');
+        Route::get('/delete/{feature}', 'delete')->name('delete');
+    });
