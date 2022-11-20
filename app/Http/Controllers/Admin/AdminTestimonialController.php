@@ -10,6 +10,9 @@ class AdminTestimonialController extends Controller
     public function index(){
         $testimonials = Testimonial::get();
         return view('admin.testimonials.index',compact('testimonials'));
+    }
 
+    public function create(){
+        return view('admin.testimonials.create');
     }
 }
