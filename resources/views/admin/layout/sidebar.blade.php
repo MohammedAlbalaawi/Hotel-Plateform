@@ -19,7 +19,7 @@
 {{--                </ul>--}}
 {{--            </li>--}}
 
-            <li class=""><a class="nav-link" href="{{ route('adminSlider.view') }}"><i class="fa fa-hand-point-right"></i> <span>ٍSlides</span></a></li>
+            <li class=""><a class="nav-link" href="{{ route('adminSlider.index') }}"><i class="fa fa-hand-point-right"></i> <span>ٍSlides</span></a></li>
 
             <li class=""><a class="nav-link" href="{{ route('adminFeature.view') }}"><i class="fa fa-hand-point-right"></i> <span>Feature</span></a></li>
 

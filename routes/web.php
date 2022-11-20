@@ -52,7 +52,7 @@ Route::controller(AdminSlideController::class)
     ->name('adminSlider.')
     ->middleware('admin:admin')
     ->group(function () {
-        Route::get('/view', 'index')->name('view');
+        Route::get('/view', 'index')->name('index');
         Route::get('/add', 'create')->name('create');
         Route::post('/store', 'store')->name('store');
         Route::get('/edit/{slider}', 'edit')->name('edit');

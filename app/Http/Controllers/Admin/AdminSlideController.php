@@ -14,12 +14,12 @@ class AdminSlideController extends Controller
     public function index()
     {
         $slides = Slider::paginate(3);
-        return view('admin.slide_view', compact('slides'));
+        return view('admin.slider.index', compact('slides'));
     }
 
     public function create()
     {
-        return view('admin.slide_create');
+        return view('admin.slider.create');
     }
 
     public function store(SlideStoreRequest $request)
@@ -30,14 +30,14 @@ class AdminSlideController extends Controller
         Slider::create($slide);
 
         return redirect()
-            ->route('adminSlider.view')
+            ->route('adminSlider.index')
             ->with('success', 'Slide added successfully');
     }
 
     public function edit(Slider $slider)
     {
         // $slide_data = Slider::where('id',$id)->first();
-        return view('admin.slide_edit',compact('slider'));
+        return view('admin.slider.edit',compact('slider'));
     }
 
     public function update(SlideUpdateRequest $request,Slider $slider)
@@ -60,7 +60,7 @@ class AdminSlideController extends Controller
         ]);
 
         return redirect()
-            ->route('adminSlider.view')
+            ->route('adminSlider.index')
             ->with('success', 'Slider updated successfully');
     }
 
