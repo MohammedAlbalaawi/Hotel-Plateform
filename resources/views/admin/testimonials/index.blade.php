@@ -34,10 +34,19 @@
                                                  alt="slid" class="w_200">
                                         </td>
                                         <td >{{ Str::limit($testimonial->comment,50)}}</td>
-                                        <td class="">
-                                            <a href="{{ route('adminSlider.edit',$testimonial->id) }}" class="btn btn-warning w-auto">Edit</a>
-                                            <a href="{{ route('adminSlider.delete',$testimonial->id) }}" class="btn btn-danger w-auto"
-                                               onClick="return confirm('Are you sure?');">Delete</a>
+                                        <td >
+                                            <div class="d-flex justify-content-center">
+                                            <a href="{{ route('testimonials.edit',$testimonial->id) }}" class="btn btn-warning mr-2 px-5">Edit</a>
+                                            <form action="{{ route('testimonials.destroy',$testimonial->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit"
+                                                        class="btn btn-danger px-5"
+                                                        onClick="return confirm('Are you sure?');">
+                                                    Delete</button>
+                                            </form>
+                                            </div>
                                         </td>
                                     </tr>
                                     @empty
