@@ -34,7 +34,7 @@
                                         <td>
                                             {{ $feature->heading}}
                                         </td>
-                                        <td class="">
+                                        <td>
                                             <a href="{{ route('adminFeature.edit',$feature->id) }}" class="btn btn-warning w-25">Edit</a>
                                             <a href="{{ route('adminFeature.delete',$feature->id) }}" class="btn btn-danger w-25"
                                                onClick="return confirm('Are you sure?');">Delete</a>
