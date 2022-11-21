@@ -63,6 +63,10 @@ class AdminPostController extends Controller
 
     public function destroy(Post $model)
     {
+        if ($model->photo && Storage::exists($model->photo)) {
+            Storage::delete($model->photo);
+        }
+
         $model->delete();
         return redirect()
             ->route('posts.index')
