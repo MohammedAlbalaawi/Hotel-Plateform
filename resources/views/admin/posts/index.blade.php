@@ -31,12 +31,22 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
                                             <img src="{{\Illuminate\Support\Facades\Storage::url( $post->photo )}}"
-                                                 alt="slid" class="w_200">
+                                                 alt="slide" class="w_100 h_100 shadow">
                                         </td>
-                                        <td class="">
-                                            <a href="{{ route('posts.edit',$post->id) }}" class="btn btn-warning w-25">Edit</a>
-                                            <a href="{{ route('posts.delete',$post->id) }}" class="btn btn-danger w-25"
-                                               onClick="return confirm('Are you sure?');">Delete</a>
+                                        <td>{{$post->heading}}</td>
+                                        <td class="w_50">
+                                            <div class="d-flex justify-content-center ">
+                                            <a href="{{ route('posts.edit',$post->id) }}" class="btn btn-warning  mr-2 px-5">Edit</a>
+                                            <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit"
+                                                        class="btn btn-danger px-5"
+                                                        onClick="return confirm('Are you sure?');">
+                                                    Delete</button>
+                                            </form>
+                                            </div>
                                         </td>
                                     </tr>
                                     @empty

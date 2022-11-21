@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('photo');
             $table->string('heading');
             $table->string('short_content');
-            $table->text('content');
+            $table->text('long_content');
             $table->integer('total_views');
             $table->timestamps();
         });
