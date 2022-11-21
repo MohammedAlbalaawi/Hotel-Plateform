@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
@@ -78,4 +79,9 @@ Route::controller(AdminFeatureController::class)
 /* testimonials Routes */
 Route::resource('testimonials', AdminTestimonialController::class)
     ->parameters(['testimonials' => 'model'])
+    ->middleware('admin:admin');
+
+/* posts Routes */
+Route::resource('posts', AdminPostController::class)
+    ->parameters(['posts' => 'model'])
     ->middleware('admin:admin');

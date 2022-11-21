@@ -19,11 +19,13 @@
 {{--                </ul>--}}
 {{--            </li>--}}
 
-            <li class=""><a class="nav-link" href="{{ route('adminSlider.index') }}"><i class="fa fa-hand-point-right"></i> <span>ٍSlides</span></a></li>
+            <li class=""><a class="nav-link" href="{{ route('adminSlider.index') }}"><i class="fa fa-hand-o-right"></i> <span>ٍSlides</span></a></li>
 
-            <li class=""><a class="nav-link" href="{{ route('adminFeature.view') }}"><i class="fa fa-hand-point-right"></i> <span>Features</span></a></li>
+            <li class=""><a class="nav-link" href="{{ route('adminFeature.view') }}"><i class="fa fa-hand-o-right"></i> <span>Features</span></a></li>
 
-            <li class=""><a class="nav-link" href="{{ route('testimonials.index') }}"><i class="fa fa-hand-point-right"></i> <span>Testimonials</span></a></li>
+            <li class=""><a class="nav-link" href="{{ route('testimonials.index') }}"><i class="fa fa-hand-o-right"></i> <span>Testimonials</span></a></li>
+
+            <li class=""><a class="nav-link" href="{{ route('posts.index') }}"><i class="fa fa-hand-o-right"></i> <span>Posts</span></a></li>
 
         </ul>
     </aside>
