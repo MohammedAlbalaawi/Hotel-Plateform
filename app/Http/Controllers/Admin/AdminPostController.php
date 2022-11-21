@@ -15,6 +15,10 @@ class AdminPostController extends Controller
         return view('admin.posts.index', compact('posts'));
     }
 
+    public function show(Post $model){
+
+    }
+
     public function create()
     {
         return view('admin.posts.create');
