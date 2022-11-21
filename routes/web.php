@@ -9,11 +9,13 @@ use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\front\AboutController;
 use App\Http\Controllers\front\HomeController;
+use App\Http\Controllers\front\PostController;
 use Illuminate\Support\Facades\Route;
 
 /* Front */
 Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('/about', [AboutController::class,'index'])->name('about');
+Route::get('/blog', [PostController::class,'index'])->name('blog');
 
 
 /* Admin Controllers*/
