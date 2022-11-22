@@ -15,8 +15,15 @@ use Illuminate\Support\Facades\Route;
 /* Front */
 Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('/about', [AboutController::class,'index'])->name('about');
-Route::get('/blog', [PostController::class,'index'])->name('blog');
 
+
+/* --- Login Controller ---*/
+Route::controller(PostController::class)
+    ->name('blog.')
+    ->group(function () {
+        Route::get('/blog', 'index')->name('index');
+        Route::get('/post/{model}', 'show')->name('show');
+    });
 
 /* Admin Controllers*/
     /* --- Home Controller ---*/

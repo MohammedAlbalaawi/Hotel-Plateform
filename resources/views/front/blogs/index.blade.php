@@ -28,7 +28,7 @@
                                 <p>{{$post->short_content}}</p>
                             </div>
                             <div class="button">
-                                <a href="" class="btn btn-primary">Read More</a>
+                                <a href="{{route('blog.show',$post->id)}}" class="btn btn-primary">Read More</a>
                             </div>
                         </div>
                     </div>

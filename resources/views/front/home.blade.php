@@ -287,12 +287,12 @@
                             <img src="{{\Illuminate\Support\Facades\Storage::url($post->photo)}}" alt="">
                         </div>
                         <div class="text">
-                            <h2><a href="">{{$post->heading}}</a></h2>
+                            <h2><a href="{{route('blog.show',$post->id)}}">{{$post->heading}}</a></h2>
                             <div class="short-des">
                                 <p>{{$post->short_content}}</p>
                             </div>
                             <div class="button">
-                                <a href="" class="btn btn-primary">Read More</a>
+                                <a href="{{route('blog.show',$post->id)}}" class="btn btn-primary">Read More</a>
                             </div>
                         </div>
                     </div>

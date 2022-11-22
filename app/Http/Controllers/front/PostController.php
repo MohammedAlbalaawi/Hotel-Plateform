@@ -10,7 +10,12 @@ class PostController extends Controller
 {
     protected function index(){
         $posts = Post::orderBy('id', 'desc')->paginate(3);
-        return view('front.blog',compact('posts'));
+        return view('front.blogs.index',compact('posts'));
+
+    }
+
+    public function show(Post $model){
+        return view('front.blogs.show',compact('model'));
 
     }
 }
