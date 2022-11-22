@@ -32,7 +32,7 @@
                     </div>
                     <div class="item">
                         <b><i class="fa fa-eye"></i></b>
-                        234
+                        {{views($model)->count()}}
                     </div>
                 </div>
                 <div class="main-text">

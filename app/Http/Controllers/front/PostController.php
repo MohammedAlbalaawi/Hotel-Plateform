@@ -15,6 +15,7 @@ class PostController extends Controller
     }
 
     public function show(Post $model){
+        views($model)->cooldown(30)->record();
         return view('front.blogs.show',compact('model'));
 
     }
