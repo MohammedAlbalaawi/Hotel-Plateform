@@ -21,14 +21,16 @@
                 </div>
             </div>
             @empty
-                No Slides to show
+                <div  style="height: 200px; padding-bottom: 20px;">
+                <p class="text-center"> No Slides to show</p>
+                </div>
             @endforelse
 
 
         </div>
     </div>
 
-    <div class="search-section">
+    <div class="search-section pt-2">
         <div class="container">
             <form action="cart.html" method="post">
                 <div class="inner">
@@ -245,34 +247,25 @@
             <div class="row">
                 <div class="col-12">
                     <div class="testimonial-carousel owl-carousel">
+                        @forelse($testimonials as $testimonial)
                         <div class="item">
                             <div class="photo">
-                                <img src="uploads/t1.jpg" alt="">
+                                <img src="{{\Illuminate\Support\Facades\Storage::url( $testimonial->photo )}}" alt="">
                             </div>
                             <div class="text">
-                                <h4>Robert Krol</h4>
-                                <p>CEO, ABC Company</p>
+                                <h4>{{$testimonial->name}}</h4>
+                                <p>{{$testimonial->career}}</p>
                             </div>
                             <div class="description">
                                 <p>
-                                    Lorem ipsum dolor sit amet, an labores explicari qui, eu nostrum copiosae argumentum has. Latine propriae quo no, unum ridens. Lorem ipsum dolor sit amet, an labores explicari qui, eu nostrum copiosae argumentum has. Latine propriae quo no, unum ridens.
+                                    {{$testimonial->comment}}
                                 </p>
                             </div>
                         </div>
-                        <div class="item">
-                            <div class="photo">
-                                <img src="uploads/t2.jpg" alt="">
-                            </div>
-                            <div class="text">
-                                <h4>Sal Harvey</h4>
-                                <p>Director, DEF Company</p>
-                            </div>
-                            <div class="description">
-                                <p>
-                                    Lorem ipsum dolor sit amet, an labores explicari qui, eu nostrum copiosae argumentum has. Latine propriae quo no, unum ridens. Lorem ipsum dolor sit amet, an labores explicari qui, eu nostrum copiosae argumentum has. Latine propriae quo no, unum ridens.
-                                </p>
-                            </div>
-                        </div>
+                        @empty
+                            <p>No Data</p>
+                        @endforelse
+
                     </div>
                 </div>
             </div>
@@ -287,60 +280,26 @@
                 </div>
             </div>
             <div class="row">
+                @forelse($posts as $post)
                 <div class="col-md-4">
                     <div class="inner">
                         <div class="photo">
-                            <img src="uploads/1.jpg" alt="">
+                            <img src="{{\Illuminate\Support\Facades\Storage::url($post->photo)}}" alt="">
                         </div>
                         <div class="text">
-                            <h2><a href="post.html">This is a sample blog post title</a></h2>
+                            <h2><a href="{{route('blog.show',$post->id)}}">{{$post->heading}}</a></h2>
                             <div class="short-des">
-                                <p>
-                                    If you want to get some good contents from the people of your country then just contribute into the main community of your people and I am sure you will be benfitted from that.
-                                </p>
+                                <p>{{$post->short_content}}</p>
                             </div>
                             <div class="button">
-                                <a href="post.html" class="btn btn-primary">Read More</a>
+                                <a href="{{route('blog.show',$post->id)}}" class="btn btn-primary">Read More</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="inner">
-                        <div class="photo">
-                            <img src="uploads/2.jpg" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="post.html">This is a sample blog post title</a></h2>
-                            <div class="short-des">
-                                <p>
-                                    If you want to get some good contents from the people of your country then just contribute into the main community of your people and I am sure you will be benfitted from that.
-                                </p>
-                            </div>
-                            <div class="button">
-                                <a href="post.html" class="btn btn-primary">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="inner">
-                        <div class="photo">
-                            <img src="uploads/3.jpg" alt="">
-                        </div>
-                        <div class="text">
-                            <h2><a href="post.html">This is a sample blog post title</a></h2>
-                            <div class="short-des">
-                                <p>
-                                    If you want to get some good contents from the people of your country then just contribute into the main community of your people and I am sure you will be benfitted from that.
-                                </p>
-                            </div>
-                            <div class="button">
-                                <a href="post.html" class="btn btn-primary">Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                    No Posts
+                @endforelse
             </div>
         </div>
     </div>

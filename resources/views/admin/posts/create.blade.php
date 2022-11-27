@@ -1,9 +1,9 @@
 @extends('admin.layout.app')
 
-@section('heading','Add Slide')
+@section('heading','Add Post')
 
 @section('right_top_button')
-    <a href="{{route('adminSlider.index')}}" class="btn btn-primary"><i class="fa fa-eye"></i> View slides </a>
+    <a href="{{route('posts.index')}}" class="btn btn-primary"><i class="fa fa-eye"></i> View Posts</a>
 @endsection
 
 @section('main_content')
@@ -12,7 +12,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('adminSlider.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12">
@@ -21,20 +21,16 @@
                                         <input type="file" name="photo">
                                     </div>
                                     <div class="mb-4">
-                                        <label class="form-label">Heading</label>
+                                        <label class="form-label">Title</label>
                                         <input type="text" class="form-control" name="heading" value="{{old('heading')}}">
                                     </div>
                                     <div class="mb-4">
-                                        <label class="form-label">Text</label>
-                                        <input type="text" class="form-control" name="text" value="{{old('text')}}">
+                                        <label class="form-label">Short Description</label>
+                                        <input type="text" class="form-control" name="short_content" value="{{old('short_content')}}">
                                     </div>
                                     <div class="mb-4">
-                                        <label class="form-label">Button Test</label>
-                                        <input type="text" class="form-control" name="button_text" value="{{old('button_text')}}">
-                                    </div>
-                                    <div class="mb-4">
-                                        <label class="form-label">Button URL</label>
-                                        <input type="text" class="form-control" name="button_url" value="{{old('button_url')}}">
+                                        <label class="form-label">Content</label>
+                                        <textarea name="long_content" style="height: 100px;"  class="form-control snote">{{old('long_content')}}</textarea>
                                     </div>
                                     <div class="mb-4">
                                         <button type="submit" class="btn btn-primary">submit</button>

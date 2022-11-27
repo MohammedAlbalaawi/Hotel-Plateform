@@ -3,17 +3,27 @@
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\front\AboutController;
 use App\Http\Controllers\front\HomeController;
+use App\Http\Controllers\front\PostController;
 use Illuminate\Support\Facades\Route;
 
 /* Front */
 Route::get('/', [HomeController::class,'index'])->name('home');
 Route::get('/about', [AboutController::class,'index'])->name('about');
 
+
+/* --- Login Controller ---*/
+Route::controller(PostController::class)
+    ->name('blog.')
+    ->group(function () {
+        Route::get('/blog', 'index')->name('index');
+        Route::get('/post/{model}', 'show')->name('show');
+    });
 
 /* Admin Controllers*/
     /* --- Home Controller ---*/
@@ -78,4 +88,9 @@ Route::controller(AdminFeatureController::class)
 /* testimonials Routes */
 Route::resource('testimonials', AdminTestimonialController::class)
     ->parameters(['testimonials' => 'model'])
+    ->middleware('admin:admin');
+
+/* posts Routes */
+Route::resource('posts', AdminPostController::class)
+    ->parameters(['posts' => 'model'])
     ->middleware('admin:admin');
