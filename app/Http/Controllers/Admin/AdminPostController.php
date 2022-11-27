@@ -15,9 +15,6 @@ class AdminPostController extends Controller
         return view('admin.posts.index', compact('posts'));
     }
 
-    public function show(Post $model){
-
-    }
 
     public function create()
     {
@@ -28,7 +25,7 @@ class AdminPostController extends Controller
     {
         $post = $request->validated();
         $post['photo'] = $request->file('photo')->store('posts');
-        $post['total_views'] = 1;
+        $post['total_views'] = 0;
 
 
         Post::create($post);
