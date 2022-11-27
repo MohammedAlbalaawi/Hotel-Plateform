@@ -10,15 +10,17 @@ use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\front\AboutController;
 use App\Http\Controllers\front\HomeController;
+use App\Http\Controllers\front\PhotoController;
 use App\Http\Controllers\front\PostController;
 use Illuminate\Support\Facades\Route;
 
 /* Front */
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/gallery', [PhotoController::class, 'index'])->name('gallery');
 
 
-/* --- Login Controller ---*/
+/* --- blog Controller ---*/
 Route::controller(PostController::class)
     ->name('blog.')
     ->group(function () {
