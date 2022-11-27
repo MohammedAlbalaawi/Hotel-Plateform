@@ -33,6 +33,7 @@
                                             <img src="{{\Illuminate\Support\Facades\Storage::url( $photo->photo )}}"
                                                  alt="photo" class="w_200">
                                         </td>
+                                        <td>{{$photo->caption}}</td>
                                         <td class="">
                                             <a href="{{ route('photos.edit',$photo->id) }}" class="btn btn-warning w-25">Edit</a>
                                             <a href="{{ route('photos.destroy',$photo->id) }}" class="btn btn-danger w-25"
