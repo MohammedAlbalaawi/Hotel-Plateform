@@ -14,8 +14,8 @@ use App\Http\Controllers\front\PostController;
 use Illuminate\Support\Facades\Route;
 
 /* Front */
-Route::get('/', [HomeController::class,'index'])->name('home');
-Route::get('/about', [AboutController::class,'index'])->name('about');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
 
 
 /* --- Login Controller ---*/
@@ -27,30 +27,30 @@ Route::controller(PostController::class)
     });
 
 /* Admin Controllers*/
-    /* --- Home Controller ---*/
-Route::get('/admin/home', [AdminHomeController::class,'index'])
-        ->name('admin_home')
-        ->middleware('admin:admin');
+/* --- Home Controller ---*/
+Route::get('/admin/home', [AdminHomeController::class, 'index'])
+    ->name('admin_home')
+    ->middleware('admin:admin');
 
-    /* --- Login Controller ---*/
+/* --- Login Controller ---*/
 Route::controller(AdminLoginController::class)
     ->prefix('admin')
     ->name('adminDashboard.')
     ->group(function () {
-        Route::get('/login','index')->name('index');
+        Route::get('/login', 'index')->name('index');
         Route::post('/login-submit', 'login_submit')->name('submit');
 
-        Route::get('/logout','logout')->name('logout');
+        Route::get('/logout', 'logout')->name('logout');
 
-        Route::get('/forget-password','forget_password')->name('forgetPassword');
-        Route::post('/forget-password-submit','forget_password_submit')->name('forgetPassword_submit');
+        Route::get('/forget-password', 'forget_password')->name('forgetPassword');
+        Route::post('/forget-password-submit', 'forget_password_submit')->name('forgetPassword_submit');
 
-        Route::get('/reset-password/{token}/{email}','reset_password')->name('resePassword');
-        Route::post('/reset-password-submit','reset_password_submit')->name('resePasswordSubmit');
-});
+        Route::get('/reset-password/{token}/{email}', 'reset_password')->name('resePassword');
+        Route::post('/reset-password-submit', 'reset_password_submit')->name('resePasswordSubmit');
+    });
 
-    /* --- Profile Controller ---*/
-    Route::controller(AdminProfileController::class)
+/* --- Profile Controller ---*/
+Route::controller(AdminProfileController::class)
     ->middleware('admin:admin')
     ->group(function () {
         Route::get('/edit-profile', 'index')->name('admin_profile');
@@ -70,7 +70,7 @@ Route::controller(AdminSlideController::class)
         Route::get('/edit/{slider}', 'edit')->name('edit');
         Route::put('/update/{slider}', 'update')->name('update');
         Route::get('/delete/{slider}', 'delete')->name('delete');
-});
+    });
 
 /* features Routes */
 Route::controller(AdminFeatureController::class)

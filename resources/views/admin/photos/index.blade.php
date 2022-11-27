@@ -34,10 +34,19 @@
                                                  alt="photo" class="w_200">
                                         </td>
                                         <td>{{$photo->caption}}</td>
-                                        <td class="">
-                                            <a href="{{ route('photos.edit',$photo->id) }}" class="btn btn-warning w-25">Edit</a>
-                                            <a href="{{ route('photos.destroy',$photo->id) }}" class="btn btn-danger w-25"
-                                               onClick="return confirm('Are you sure?');">Delete</a>
+                                        <td class="w_50">
+                                            <div class="d-flex justify-content-center ">
+                                                <a href="{{ route('photos.edit',$photo->id) }}" class="btn btn-warning  mr-2 px-5">Edit</a>
+                                                <form action="{{ route('photos.destroy',$photo->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <button type="submit"
+                                                            class="btn btn-danger px-5"
+                                                            onClick="return confirm('Are you sure?');">
+                                                        Delete</button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                     @empty
