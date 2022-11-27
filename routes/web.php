@@ -3,21 +3,24 @@
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\front\AboutController;
 use App\Http\Controllers\front\HomeController;
+use App\Http\Controllers\front\PhotoController;
 use App\Http\Controllers\front\PostController;
 use Illuminate\Support\Facades\Route;
 
 /* Front */
-Route::get('/', [HomeController::class,'index'])->name('home');
-Route::get('/about', [AboutController::class,'index'])->name('about');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/gallery', [PhotoController::class, 'index'])->name('gallery');
 
 
-/* --- Login Controller ---*/
+/* --- blog Controller ---*/
 Route::controller(PostController::class)
     ->name('blog.')
     ->group(function () {
@@ -26,30 +29,30 @@ Route::controller(PostController::class)
     });
 
 /* Admin Controllers*/
-    /* --- Home Controller ---*/
-Route::get('/admin/home', [AdminHomeController::class,'index'])
-        ->name('admin_home')
-        ->middleware('admin:admin');
+/* --- Home Controller ---*/
+Route::get('/admin/home', [AdminHomeController::class, 'index'])
+    ->name('admin_home')
+    ->middleware('admin:admin');
 
-    /* --- Login Controller ---*/
+/* --- Login Controller ---*/
 Route::controller(AdminLoginController::class)
     ->prefix('admin')
     ->name('adminDashboard.')
     ->group(function () {
-        Route::get('/login','index')->name('index');
+        Route::get('/login', 'index')->name('index');
         Route::post('/login-submit', 'login_submit')->name('submit');
 
-        Route::get('/logout','logout')->name('logout');
+        Route::get('/logout', 'logout')->name('logout');
 
-        Route::get('/forget-password','forget_password')->name('forgetPassword');
-        Route::post('/forget-password-submit','forget_password_submit')->name('forgetPassword_submit');
+        Route::get('/forget-password', 'forget_password')->name('forgetPassword');
+        Route::post('/forget-password-submit', 'forget_password_submit')->name('forgetPassword_submit');
 
-        Route::get('/reset-password/{token}/{email}','reset_password')->name('resePassword');
-        Route::post('/reset-password-submit','reset_password_submit')->name('resePasswordSubmit');
-});
+        Route::get('/reset-password/{token}/{email}', 'reset_password')->name('resePassword');
+        Route::post('/reset-password-submit', 'reset_password_submit')->name('resePasswordSubmit');
+    });
 
-    /* --- Profile Controller ---*/
-    Route::controller(AdminProfileController::class)
+/* --- Profile Controller ---*/
+Route::controller(AdminProfileController::class)
     ->middleware('admin:admin')
     ->group(function () {
         Route::get('/edit-profile', 'index')->name('admin_profile');
@@ -69,7 +72,7 @@ Route::controller(AdminSlideController::class)
         Route::get('/edit/{slider}', 'edit')->name('edit');
         Route::put('/update/{slider}', 'update')->name('update');
         Route::get('/delete/{slider}', 'delete')->name('delete');
-});
+    });
 
 /* features Routes */
 Route::controller(AdminFeatureController::class)
@@ -93,4 +96,9 @@ Route::resource('testimonials', AdminTestimonialController::class)
 /* posts Routes */
 Route::resource('posts', AdminPostController::class)
     ->parameters(['posts' => 'model'])
+    ->middleware('admin:admin');
+
+/* photo gallery Routes */
+Route::resource('photos', AdminPhotoController::class)
+    ->parameters(['photos' => 'model'])
     ->middleware('admin:admin');
