@@ -25,7 +25,6 @@ class AdminPostController extends Controller
     {
         $post = $request->validated();
         $post['photo'] = $request->file('photo')->store('posts');
-        $post['total_views'] = 0;
 
 
         Post::create($post);

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('heading');
             $table->string('short_content');
             $table->text('long_content');
-            $table->integer('total_views');
+            $table->integer('total_views')->default(0);
             $table->timestamps();
         });
     }
