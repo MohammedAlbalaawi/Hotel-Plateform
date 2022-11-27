@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminSlideController;
@@ -93,4 +94,9 @@ Route::resource('testimonials', AdminTestimonialController::class)
 /* posts Routes */
 Route::resource('posts', AdminPostController::class)
     ->parameters(['posts' => 'model'])
+    ->middleware('admin:admin');
+
+/* photo gallery Routes */
+Route::resource('photos', AdminPhotoController::class)
+    ->parameters(['photos' => 'model'])
     ->middleware('admin:admin');

@@ -27,6 +27,8 @@
 
             <li class=""><a class="nav-link" href="{{ route('posts.index') }}"><i class="fa fa-hand-o-right"></i> <span>Posts</span></a></li>
 
+            <li class=""><a class="nav-link" href="{{ route('photos.index') }}"><i class="fa fa-hand-o-right"></i> <span>Photo Gallery</span></a></li>
+
         </ul>
     </aside>
 </div>
