@@ -30,8 +30,8 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <iframe width="560"
-                                                    height="315"
+                                            <iframe width="200"
+                                                    height="105"
                                                     src="https://www.youtube.com/embed/{{$video->video_id}}"
                                                     title="YouTube video player" frameborder="0"
                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
