@@ -13,12 +13,14 @@ use App\Http\Controllers\front\AboutController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\PhotoController;
 use App\Http\Controllers\front\PostController;
+use App\Http\Controllers\front\VideoController;
 use Illuminate\Support\Facades\Route;
 
 /* Front */
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/gallery', [PhotoController::class, 'index'])->name('gallery');
+Route::get('/video-gallery', [VideoController::class, 'index'])->name('videoGallery');
 
 
 /* --- blog Controller ---*/
