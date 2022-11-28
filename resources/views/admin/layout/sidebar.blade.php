@@ -29,6 +29,8 @@
 
             <li class=""><a class="nav-link" href="{{ route('photos.index') }}"><i class="fa fa-hand-o-right"></i> <span>Photo Gallery</span></a></li>
 
+            <li class=""><a class="nav-link" href="{{ route('videos.index') }}"><i class="fa fa-hand-o-right"></i> <span>Video Gallery</span></a></li>
+
         </ul>
     </aside>
 </div>

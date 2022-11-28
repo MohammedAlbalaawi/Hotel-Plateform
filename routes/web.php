@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
+use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\front\AboutController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\PhotoController;
@@ -101,4 +102,9 @@ Route::resource('posts', AdminPostController::class)
 /* photo gallery Routes */
 Route::resource('photos', AdminPhotoController::class)
     ->parameters(['photos' => 'model'])
+    ->middleware('admin:admin');
+
+/* photo gallery Routes */
+Route::resource('videos', AdminVideoController::class)
+    ->parameters(['videos' => 'model'])
     ->middleware('admin:admin');
