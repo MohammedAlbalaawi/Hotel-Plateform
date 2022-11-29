@@ -24,8 +24,8 @@ class PhotoUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo' => 'image|mimes:jpg,jpeg,png,gif,webp',
-            'caption' => 'nullable'
+            'photo' => ['image','mimes:jpg,jpeg,png,gif,webp'],
+            'caption' => ['nullable'],
         ];
     }
 }

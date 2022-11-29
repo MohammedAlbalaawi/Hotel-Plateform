@@ -24,8 +24,8 @@ class PhotoStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo' => 'required|image|mimes:jpg,jpeg,png,gif,webp',
-            'caption' => 'nullable'
+            'photo' => ['required','image','mimes:jpg,jpeg,png,gif,webp'],
+            'caption' => ['nullable'],
         ];
     }
 }

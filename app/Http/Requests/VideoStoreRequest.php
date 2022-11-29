@@ -24,8 +24,8 @@ class VideoStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'video_id' => 'required',
-            'caption' => 'nullable'
+            'video_id' => ['required'],
+            'caption' => ['nullable'],
         ];
     }
 }
