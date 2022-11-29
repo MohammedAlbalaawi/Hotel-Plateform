@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -109,4 +110,9 @@ Route::resource('photos', AdminPhotoController::class)
 /* photo gallery Routes */
 Route::resource('videos', AdminVideoController::class)
     ->parameters(['videos' => 'model'])
+    ->middleware('admin:admin');
+
+/* faq gallery Routes */
+Route::resource('faqs', AdminFaqController::class)
+    ->parameters(['faqs' => 'model'])
     ->middleware('admin:admin');
