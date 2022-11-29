@@ -13,4 +13,12 @@ class Video extends Model
         'video_id',
         'caption',
         ];
+
+    public function videoPreview($video_id){
+        return "http://www.youtube.com/watch?v=" . $video_id;
+    }
+
+    public function ImageVideoPreview($video_id){
+        return "http://img.youtube.com/vi/" . $video_id . "/0.jpg" ;
+    }
 }
