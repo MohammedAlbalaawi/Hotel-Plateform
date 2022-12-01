@@ -12,5 +12,6 @@ class Page extends Model
     protected $fillable = [
         'about_heading',
         'about_content',
+        'about_status',
     ];
 }

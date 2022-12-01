@@ -24,6 +24,7 @@ class AdminPageController extends Controller
         $page_about->update([
             'about_heading' => $request->about_heading,
             'about_content' => $request->about_content,
+            'about_status' => $request->about_status,
         ]);
 
         return redirect()
