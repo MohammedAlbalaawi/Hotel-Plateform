@@ -24,9 +24,9 @@ class ProfileUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-                'name' => 'required',
-                'photo' => 'image|mimes:jpg,jpeg,png,gif,webp'
-            
+                'name' => ['required'],
+                'photo' => ['image','mimes:jpg,jpeg,png,gif,webp'],
+
         ];
     }
 }

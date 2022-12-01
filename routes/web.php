@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\front\AboutController;
+use App\Http\Controllers\front\FaqController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\PhotoController;
 use App\Http\Controllers\front\PostController;
@@ -21,6 +23,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/gallery', [PhotoController::class, 'index'])->name('gallery');
 Route::get('/video-gallery', [VideoController::class, 'index'])->name('videoGallery');
+Route::get('/faq', [FaqController::class, 'index'])->name('faq');
 
 
 /* --- blog Controller ---*/
@@ -109,4 +112,9 @@ Route::resource('photos', AdminPhotoController::class)
 /* photo gallery Routes */
 Route::resource('videos', AdminVideoController::class)
     ->parameters(['videos' => 'model'])
+    ->middleware('admin:admin');
+
+/* faq gallery Routes */
+Route::resource('faqs', AdminFaqController::class)
+    ->parameters(['faqs' => 'model'])
     ->middleware('admin:admin');

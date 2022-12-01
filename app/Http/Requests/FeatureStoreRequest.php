@@ -24,9 +24,9 @@ class FeatureStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'icon' => 'required',
-            'heading' => 'required',
-            'description' => 'nullable',
+            'icon' => ['required'],
+            'heading' => ['required'],
+            'description' => ['nullable'],
         ];
     }
 }

@@ -24,11 +24,11 @@ class SlideUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo' => 'image|mimes:jpg,jpeg,png,gif,webp',
-            'heading' => 'string|nullable',
-            'text' => 'string|nullable',
-            'button_text' => 'string|nullable',
-            'button_url' => 'string|nullable',
+            'photo' => ['image','mimes:jpg,jpeg,png,gif,webp'],
+            'heading' => ['string','nullable'],
+            'text' => ['string','nullable'],
+            'button_text' => ['string','nullable'],
+            'button_url' => ['string','nullable'],
         ];
     }
 }

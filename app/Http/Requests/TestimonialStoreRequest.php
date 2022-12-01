@@ -24,10 +24,10 @@ class TestimonialStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'photo' => 'required|image|mimes:jpg,jpeg,png,gif,webp',
-            'name' => 'required',
-            'career' => 'required',
-            'comment' => 'required',
+            'photo' => ['required','image','mimes:jpg,jpeg,png,gif,webp'],
+            'name' => ['required'],
+            'career' => ['required'],
+            'comment' => ['required'],
         ];
     }
 }
