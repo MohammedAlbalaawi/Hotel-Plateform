@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -118,3 +119,13 @@ Route::resource('videos', AdminVideoController::class)
 Route::resource('faqs', AdminFaqController::class)
     ->parameters(['faqs' => 'model'])
     ->middleware('admin:admin');
+
+/* static pages Routes */
+Route::controller(AdminPageController::class)
+    ->prefix('pages')
+    ->name('pages.')
+    ->middleware('admin:admin')
+    ->group(function () {
+        Route::get('/about', 'about_edit')->name('about_edit');
+        Route::post('/about/update', 'about_update')->name('about_update');
+    });
