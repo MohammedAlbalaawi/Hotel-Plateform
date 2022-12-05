@@ -21,9 +21,6 @@ class AdminPageController extends Controller
 
     public function store(PageStoreRequest $request)
     {
-        $request->merge([
-            'slug' => Str::slug($request->name)
-        ]);
 
         Page::create($request->all());
 
