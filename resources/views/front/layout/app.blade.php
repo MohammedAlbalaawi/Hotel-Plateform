@@ -73,9 +73,12 @@
                             <a href="{{route('home')}}" class="nav-link">Home</a>
                         </li>
 
+                        @if(\App\Models\Page::ABOUT_PAGE_STATUS(\App\Models\Page::ABOUT_PAGE_SLUG) == 1)
                         <li class="nav-item">
                             <a href="{{route('staticPages',['model' => \App\Models\Page::ABOUT_PAGE_SLUG])}}" class="nav-link">About</a>
                         </li>
+                        @endif
+
                         <li class="nav-item">
                             <a href="javascript:void;" class="nav-link dropdown-toggle">Room & Suite</a>
                             <ul class="dropdown-menu">

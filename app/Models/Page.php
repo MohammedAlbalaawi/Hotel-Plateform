@@ -19,4 +19,12 @@ class Page extends Model
     public const ABOUT_PAGE_SLUG = 'about-us';
     public const TERMS_PAGE_SLUG = 'terms-and-conditions';
     public const PRIVACY_PAGE_SLUG = 'privacy-policy';
+
+    public static function ABOUT_PAGE_STATUS($slug): int
+    {
+        $statusCode = Page::where('slug', $slug)->first();
+        return $statusCode->status;
+    }
+
+
 }
