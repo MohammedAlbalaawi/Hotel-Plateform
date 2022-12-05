@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProfileController;
@@ -117,4 +118,9 @@ Route::resource('videos', AdminVideoController::class)
 /* faq gallery Routes */
 Route::resource('faqs', AdminFaqController::class)
     ->parameters(['faqs' => 'model'])
+    ->middleware('admin:admin');
+
+/* static pages Routes */
+Route::resource('pages', AdminPageController::class)
+    ->parameters(['pages' => 'model'])
     ->middleware('admin:admin');
