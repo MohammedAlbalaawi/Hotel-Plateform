@@ -15,4 +15,8 @@ class Page extends Model
         'status',
         'content',
     ];
+
+    public const ABOUT_PAGE_SLUG = 'about-us';
+    public const TERMS_PAGE_SLUG = 'terms-and-conditions';
+    public const PRIVACY_PAGE_SLUG = 'privacy-policy';
 }
