@@ -72,9 +72,13 @@
                         <li class="nav-item">
                             <a href="{{route('home')}}" class="nav-link">Home</a>
                         </li>
+
+                        @if(\App\Models\Page::ABOUT_PAGE_STATUS(\App\Models\Page::ABOUT_PAGE_SLUG) == 1)
                         <li class="nav-item">
-                            <a href="{{route('about')}}" class="nav-link">About</a>
+                            <a href="{{route('staticPages',['model' => \App\Models\Page::ABOUT_PAGE_SLUG])}}" class="nav-link">About</a>
                         </li>
+                        @endif
+
                         <li class="nav-item">
                             <a href="javascript:void;" class="nav-link dropdown-toggle">Room & Suite</a>
                             <ul class="dropdown-menu">
@@ -143,8 +147,8 @@
                     <h2 class="heading">Useful Links</h2>
                     <ul class="useful-links">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="terms.html">Terms and Conditions</a></li>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="{{route('staticPages',['model' => \App\Models\Page::TERMS_PAGE_SLUG])}}">Terms and Conditions</a></li>
+                        <li><a href="{{route('staticPages',['model' => \App\Models\Page::PRIVACY_PAGE_SLUG])}}">Privacy Policy</a></li>
                         <li><a href="{{route('faq')}}">Faqs</a></li>
                     </ul>
                 </div>

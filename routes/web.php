@@ -4,13 +4,14 @@ use App\Http\Controllers\Admin\AdminFaqController;
 use App\Http\Controllers\Admin\AdminFeatureController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminPageController;
 use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminVideoController;
-use App\Http\Controllers\front\AboutController;
+use App\Http\Controllers\front\PageController;
 use App\Http\Controllers\front\FaqController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\PhotoController;
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 /* Front */
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/static-pages/{model:slug}', [PageController::class, 'index'])->name('staticPages');
 Route::get('/gallery', [PhotoController::class, 'index'])->name('gallery');
 Route::get('/video-gallery', [VideoController::class, 'index'])->name('videoGallery');
 Route::get('/faq', [FaqController::class, 'index'])->name('faq');
@@ -117,4 +118,9 @@ Route::resource('videos', AdminVideoController::class)
 /* faq gallery Routes */
 Route::resource('faqs', AdminFaqController::class)
     ->parameters(['faqs' => 'model'])
+    ->middleware('admin:admin');
+
+/* static pages Routes */
+Route::resource('pages', AdminPageController::class)
+    ->parameters(['pages' => 'model'])
     ->middleware('admin:admin');
