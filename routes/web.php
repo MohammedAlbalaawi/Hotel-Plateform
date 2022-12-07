@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\AdminSlideController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\front\AboutController;
+use App\Http\Controllers\front\ContactController;
 use App\Http\Controllers\front\FaqController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\PhotoController;
@@ -24,6 +25,13 @@ Route::get('/about', [AboutController::class, 'index'])->name('about');
 Route::get('/gallery', [PhotoController::class, 'index'])->name('gallery');
 Route::get('/video-gallery', [VideoController::class, 'index'])->name('videoGallery');
 Route::get('/faq', [FaqController::class, 'index'])->name('faq');
+
+Route::controller(ContactController::class)
+    ->name('contact.')
+    ->group(function () {
+        Route::get('/contact', 'index')->name('index');
+        Route::post('/contact/send', 'send')->name('send');
+    });
 
 
 /* --- blog Controller ---*/

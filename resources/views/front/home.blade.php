@@ -1,11 +1,9 @@
 @extends('front.layout.app')
 
 @section('main_content')
-
     <div class="slider">
         <div class="slide-carousel owl-carousel">
             @forelse ($all_slides as $slide)
-
             <div class="item" style="background-image:url({{\Illuminate\Support\Facades\Storage::url( $slide->photo )}}); background-size: 100% 100%;">
                 <div class="bg"></div>
                 <div class="text">
@@ -25,7 +23,6 @@
                 <p class="text-center"> No Slides to show</p>
                 </div>
             @endforelse
-
 
         </div>
     </div>
