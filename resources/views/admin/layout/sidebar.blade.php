@@ -33,6 +33,8 @@
 
             <li class=""><a class="nav-link" href="{{ route('faqs.index') }}"><i class="fa fa-hand-o-right"></i> <span>Faqs</span></a></li>
 
+            <li class=""><a class="nav-link" href="{{ route('subscribers.index') }}"><i class="fa fa-hand-o-right"></i> <span>Subscribers</span></a></li>
+
         </ul>
     </aside>
 </div>
