@@ -195,12 +195,15 @@
                     <p>
                         In order to get the latest news and other great items, please subscribe us here:
                     </p>
-                    <form action="" method="post">
+                    <form action="{{route('subscribe.send')}}" method="post">
+                        @csrf
                         <div class="form-group">
-                            <input type="text" name="" class="form-control">
+                            <input type="text" id="email" name="email" class="form-control">
+                            <small id="email_error" class="form-text text-danger"></small>
+                            <small id="success-msg" class="form-text text-success"></small>
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary" value="Subscribe Now">
+                            <input type="submit" class="btn btn-primary btn-submit" value="Subscribe Now">
                         </div>
                     </form>
                 </div>
@@ -220,5 +223,68 @@
 
 @include('front.layout.scripts_footer')
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".btn-submit").click(function(e){
+            e.preventDefault();
+            $('#email_error').text('');
+            $('#success-msg').text('');
+
+            var _token = $("input[name='_token']").val();
+            var email = $("#email").val();
+            var token = 'demo token';
+
+            $.ajax({
+                url: "{{ route('subscribe.send') }}",
+                type:'POST',
+                dataType: 'json',
+                data: {_token:_token, email:email,token:token},
+                success: function(data) {
+                    // $('.alert-block-success').css('display','block').append('<strong>'+data.success+'</strong>');
+                    $("#success-msg").text(data.success);
+                },
+                error: function (data) {
+                    var response = $.parseJSON(data.responseText);
+                    $.each( response.errors, function( key, value ) {
+                        // $('.alert-block-error').css('display', 'block').append('<strong>' + value[0] + '</strong><br>');
+                        $("#"+key+"_error").text(value[0]);
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+@if($errors->any())
+    @foreach($errors->all() as $error)
+        <script>
+            iziToast.error({
+                title: '',
+                position: 'bottomRight',
+                message: "{{$error}}",
+            });
+        </script>
+    @endforeach
+@endif
+
+@if(session()->get('error'))
+    <script>
+        iziToast.error({
+            title: '',
+            position: 'bottomRight',
+            message: "{{ session()->get('error') }}"
+        });
+    </script>
+@endif
+
+@if(session()->get('success'))
+    <script>
+        iziToast.success({
+            title: '',
+            position: 'bottomRight',
+            message: "{{ session()->get('success') }}"
+        });
+    </script>
+@endif
 </body>
 </html>
