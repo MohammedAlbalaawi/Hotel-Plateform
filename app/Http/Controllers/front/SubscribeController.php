@@ -22,7 +22,6 @@ class SubscribeController extends Controller
 
         $request->merge([
             'token' => hash('sha256', time()),
-            'status' => 0
         ]);
 
         $model->create($request->all());

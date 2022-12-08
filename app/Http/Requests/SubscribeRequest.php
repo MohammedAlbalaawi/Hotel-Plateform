@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class SubscribeRequest extends FormRequest
 {
@@ -24,7 +25,14 @@ class SubscribeRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required','email']
+            'email' => ['required',Rule::unique('subscribes', 'email')]
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'email.unique' => 'This :attribute subscribed before',
         ];
     }
 }
