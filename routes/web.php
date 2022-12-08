@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\AdminPhotoController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminSlideController;
+use App\Http\Controllers\Admin\AdminSubscriberController;
 use App\Http\Controllers\Admin\AdminTestimonialController;
 use App\Http\Controllers\Admin\AdminVideoController;
 use App\Http\Controllers\front\AboutController;
@@ -15,6 +16,7 @@ use App\Http\Controllers\front\FaqController;
 use App\Http\Controllers\front\HomeController;
 use App\Http\Controllers\front\PhotoController;
 use App\Http\Controllers\front\PostController;
+use App\Http\Controllers\front\SubscribeController;
 use App\Http\Controllers\front\VideoController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +35,16 @@ Route::controller(PostController::class)
         Route::get('/blog', 'index')->name('index');
         Route::get('/post/{model}', 'show')->name('show');
     });
+
+/* --- subscribe Controller ---*/
+Route::controller(SubscribeController::class)
+    ->name('subscribe.')
+    ->group(function () {
+        Route::post('/subscribe', 'send')->name('send');
+        Route::get('/subscribe/verify/{model:email}/{token}', 'verify')->name('verify');
+    });
+
+
 
 /* Admin Controllers*/
 /* --- Home Controller ---*/
@@ -117,4 +129,9 @@ Route::resource('videos', AdminVideoController::class)
 /* faq gallery Routes */
 Route::resource('faqs', AdminFaqController::class)
     ->parameters(['faqs' => 'model'])
+    ->middleware('admin:admin');
+
+/* subscribers gallery Routes */
+Route::resource('subscribers', AdminSubscriberController::class)
+    ->parameters(['subscribers' => 'model'])
     ->middleware('admin:admin');
