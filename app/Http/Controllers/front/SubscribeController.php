@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Mail;
 
 class SubscribeController extends Controller
 {
-    public function send(SubscribeRequest $request,Subscribe $model){
+    public function send(SubscribeRequest $request, Subscribe $model)
+    {
 
         if (!$request->all()) {
             return response()
@@ -19,28 +20,36 @@ class SubscribeController extends Controller
         }
 
 
-        $request->merge(['token' => hash('sha256', time())]);
+        $request->merge([
+            'token' => hash('sha256', time()),
+            'status' => 0
+        ]);
+
         $model->create($request->all());
 
-        $verification_link = url('subscribe/verify/'.$request->email."/".$request->token);
+        $verification_link = url('subscribe/verify/' . $request->email . "/" . $request->token);
 
         $subject = "Subscription Verification";
         $message = "Confirm Verification: <br>";
         $message .= "<a href='" . $verification_link . "'>Click Here</a>";
 
-        Mail::to($request->email)->send(new Websitemail($subject,$message));
+        Mail::to($request->email)->send(new Websitemail($subject, $message));
 
         return response()
             ->json(['success' => 'Thank you, Please verify your email.'], 200);
     }
 
-    public function verify(Subscribe $model, $token){
+    public function verify(Subscribe $model, $token)
+    {
 
-        if($model && $model->token == $token){
-            $model->update(['token' => '']);
-            return redirect()->route('home')->with('success','Thank you for subscribe');
-        }else{
-            return redirect()->route('home')->with('error','Link not Valid');
+        if ($model && $model->token == $token) {
+            $model->update([
+                'token' => '',
+                'status' => 1
+            ]);
+            return redirect()->route('home')->with('success', 'Thank you for subscribe');
+        } else {
+            return redirect()->route('home')->with('error', 'Link not Valid');
         }
     }
 }

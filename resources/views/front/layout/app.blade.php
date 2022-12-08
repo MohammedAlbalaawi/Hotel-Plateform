@@ -233,12 +233,13 @@
             var _token = $("input[name='_token']").val();
             var email = $("#email").val();
             var token = 'demo token';
+            var status = 0;
 
             $.ajax({
                 url: "{{ route('subscribe.send') }}",
                 type:'POST',
                 dataType: 'json',
-                data: {_token:_token, email:email,token:token},
+                data: {_token:_token, email:email,token:token,status:status},
                 success: function(data) {
                     // $('.alert-block-success').css('display','block').append('<strong>'+data.success+'</strong>');
                     $("#success-msg").text(data.success);
